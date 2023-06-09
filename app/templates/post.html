@@ -1,45 +1,32 @@
-<!DOCTYPE html>
-<html>
+{% set current_page='posts' %}
+{% extends 'base.html'%}
+{% block title %}
+Welcome To Social Media App
+{% endblock %}
+{% block content %}
 
-<head>
-    <title>POST PAGE</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/card.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/nav.css') }}">
-</head>
-
-<body style="height: 3000px;">
-    <nav class="nav">
-        <div class="left-section">
-            <div class="logo">Social Media</div>
-            <div class="left-nav-item">
-                <a href="{{ url_for('views.home_page') }}">Home</a>
-            </div>
-            <div class="left-nav-item">
-                <a href="{{ url_for('views.posts_page') }}">Posts</a>
-            </div>
-            <div class="left-nav-item">
-                <a href="{{ url_for('views.create_post_page') }}">Create post</a>
-            </div>
-        </div>
-
-        {% if current_user.is_authenticated %}
-        <div class="right-section">
-            <div class="right-nav-item"><a style="cursor: pointer;">{{ current_user.username }}</a></div>
-            <div class="right-nav-item"><a href="{{ url_for('auth.logout_page') }}">Logout</a></div>
-        </div>
-        {% else %}
-        <div class="right-section">
-            <div class="right-nav-item"><a href="{{ url_for('auth.login_page') }}">Login</a></div>
-            <div class="right-nav-item"><a href="{{ url_for('auth.register_page') }}">Register</a></div>
-        </div>
-        {% endif %}
-    </nav>
-
+<body>
     <main class="card-grid">
         {% for post in posts %}
+        {% include 'includes/post_modals.html' %}
         <div class="card">
             <div class="card-header">
                 <h2>{{ post.title }}</h2>
+                {% if current_user.is_authenticated and current_user.id == post.owner_id %}
+                <div class="card-actions">
+                    <div class="delete-icon-container">
+                        <img src="{{ url_for('static', filename='stylesheets/trash.svg') }}" alt="trash"
+                            class="delete-button" data-toggle="modal" data-target="#Modal-Delete-{{ post.id }}">
+                        <div class="delete-tooltip">Delete</div>
+                    </div>
+                    <!-- <button class="delete-button">Delete</button> -->
+                    <div class="update-icon-container">
+                        <img src="{{ url_for('static', filename='stylesheets/pen.svg') }}" alt="edit"
+                            class="update-button">
+                        <div class="update-tooltip">Edit</div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
             <div class="card-content">
                 <p>{{ post.content }}</p>
@@ -53,5 +40,4 @@
     </main>
 
 </body>
-
-</html>
+{% endblock %}

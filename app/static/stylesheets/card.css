@@ -10,8 +10,57 @@
 
 .card-header {
     background-color: lightblue;
-    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+
+.card-actions {
+  display: flex;
+  padding: 10px;
+}
+
+.delete-button, 
+.update-button {
+  flex: 1;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+
+
+.delete-button {
+  margin-right: 15px;
+}
+
+.delete-icon-container, 
+.update-icon-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-icon-container .delete-tooltip, 
+.update-icon-container .update-tooltip {
+  font-family: Roboto, Arial;
+  position: absolute;
+  background-color: lightgray;
+  color: black;
+  bottom: -30px;
+  padding: 4px 8px;
+  opacity: 0;
+  font-size: 12px;
+  transition: opacity 0.15s;
+}
+
+.delete-icon-container:hover .delete-tooltip, 
+.update-icon-container:hover .update-tooltip {
+  opacity: 1;
+}
+
+
 
 .card-header h2 {
     display: -webkit-box;
@@ -57,20 +106,29 @@
     padding-top: 60px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 700px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 999px) {
     .card-grid {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-@media (min-width: 751px) and (max-width: 999px) {
-    .card-grid {
+
+  
+  @media (min-width: 1000px) and (max-width: 1500px) {
+  .card-grid {
       grid-template-columns: 1fr 1fr 1fr;
     }
   }
-  
-  @media (min-width: 1000px) {
-  .card-grid {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+
+
+  @media (min-width: 1501px) {
+    .card-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
     }
-  }

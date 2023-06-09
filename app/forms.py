@@ -32,3 +32,6 @@ class PostForm(FlaskForm):
     title = StringField(label="Title: ", validators=[Length(max=30), DataRequired()])
     content = StringField(label="Content: ", validators=[DataRequired()])
     submit = SubmitField(label="Create Post")
+
+class DeleteForm(FlaskForm):
+    submit = SubmitField(label='Delete Post!')
