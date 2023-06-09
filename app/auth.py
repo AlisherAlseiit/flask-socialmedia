@@ -16,6 +16,7 @@ def register_page():
         db.session.add(new_user)
         db.session.commit()
         flash(f"Account created successfully! You are now logged in as {new_user.username}", category='success')
+        login_user(new_user)
         return redirect(url_for('views.home_page')) 
     if form.errors != {}: #If there are errors from the validations
         for err_msg in form.errors.values():

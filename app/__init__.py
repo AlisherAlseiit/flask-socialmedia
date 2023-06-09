@@ -14,6 +14,7 @@ def create_app():
     # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
     app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
     app.config['SECRET_KEY'] = 'ec9439cfc6c796ae2029594d'
+    app.static_folder = 'static'
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)

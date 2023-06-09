@@ -1,0 +1,49 @@
+.nav {
+    height: 55px;
+    background-color: white;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    
+}
+
+.logo {
+    margin-right: 15px;
+    margin-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.left-section a, 
+.right-section a {
+    margin-right: 15px;
+    font-size: 14px;
+    text-decoration: none;
+    color: gray;  
+}
+
+.left-section div {
+    font-family: Roboto, Arial;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
