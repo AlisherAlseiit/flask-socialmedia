@@ -22,7 +22,7 @@ Welcome To Social Media App
                     <!-- <button class="delete-button">Delete</button> -->
                     <div class="update-icon-container">
                         <img src="{{ url_for('static', filename='stylesheets/pen.svg') }}" alt="edit"
-                            class="update-button">
+                            class="update-button" data-toggle="modal" data-target="#Modal-Update-{{ post.id }}">
                         <div class="update-tooltip">Edit</div>
                     </div>
                 </div>

@@ -33,5 +33,17 @@ class PostForm(FlaskForm):
     content = StringField(label="Content: ", validators=[DataRequired()])
     submit = SubmitField(label="Create Post")
 
+    def __init__(self, *args, obj=None, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        if obj:
+            self.fill_from_object(obj)
+
+    def fill_from_object(self, obj):
+        self.title.data = obj.title
+        self.content.data = obj.content
+
 class DeleteForm(FlaskForm):
     submit = SubmitField(label='Delete Post!')
+
+class UpdateForm(FlaskForm):
+    submit = SubmitField(label='Update Post!')
